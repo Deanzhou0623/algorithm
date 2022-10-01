@@ -1,15 +1,14 @@
 package com.itCs520.deanProject.services.Day03.Test;
 
 import com.itCs520.deanProject.services.Day03.Bubble;
-import com.itCs520.deanProject.services.Day03.Bubble2;
+import com.itCs520.deanProject.services.Day03.Quick;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 
-public class BubbleTest {
+public class QuickTest {
     public static void main(String[] args) {
-        Integer[] arr={4,5,6,3,2,1};
-        Bubble2.sort(arr);
+        Integer[] arr={6 , 1 , 2 , 7 , 9 , 3 , 4 , 5 , 8 };
+        Quick.sort(arr);
 
         System.out.println(Arrays.toString(arr));
     }

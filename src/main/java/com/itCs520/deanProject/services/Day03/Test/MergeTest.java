@@ -1,15 +1,14 @@
 package com.itCs520.deanProject.services.Day03.Test;
 
 import com.itCs520.deanProject.services.Day03.Bubble;
-import com.itCs520.deanProject.services.Day03.Bubble2;
+import com.itCs520.deanProject.services.Day03.Merge;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 
-public class BubbleTest {
+public class MergeTest {
     public static void main(String[] args) {
-        Integer[] arr={4,5,6,3,2,1};
-        Bubble2.sort(arr);
+        Integer[] arr={8,4,5,7,1,3,6,2};
+        Merge.sort(arr);
 
         System.out.println(Arrays.toString(arr));
     }
