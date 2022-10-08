@@ -1,7 +1,4 @@
-package com.itCs520.deanProject.services.Day03.Test;
-
-import com.itCs520.deanProject.services.Day03.Selection;
-import com.itCs520.deanProject.services.Day03.Shell;
+package com.itCs520.deanProject.services.Day03.Shell;
 
 import java.util.Arrays;
 

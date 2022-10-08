@@ -1,7 +1,6 @@
-package com.itCs520.deanProject.services.Day03.Test;
+package com.itCs520.deanProject.services.Day03.Merge;
 
-import com.itCs520.deanProject.services.Day03.Bubble;
-import com.itCs520.deanProject.services.Day03.Merge;
+import com.itCs520.deanProject.services.Day03.Merge.Merge;
 
 import java.util.Arrays;
 

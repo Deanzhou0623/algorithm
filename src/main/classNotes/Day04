@@ -1,0 +1,191 @@
+Date: 2022 October 2nd
+Author: Dean Zhou
+topic: linear table
+
+
+一. 线性表
+        1）定义：数据元素之间具有一种"一对一"的逻辑关系
+
+        2）特点：
+            a.第一个数组没有前驱，这个数据元素就被称为头节点
+            b.最后一个元素没有后继节点，这个数据元素称为尾节点
+            c.除了第一个和最后一个数据元素外，其他数据元素有且仅有一个前驱和一个后继节点
+
+        3）数学语言定义：
+            （a1,a2,a3...ai-1,ai,ai+1...an-1,an）
+             ai-1是ai的前驱
+             ai+1是ai的后继节点
+
+        4）线性表分类
+            a.顺序存储结构（顺序表）
+
+            b.链式存储结构（链表）
+
+
+    1.1 顺序表
+        1）定义：
+            顺序表是在计算机内存中已数组的形式保存的线性表，线性表的存储是用一组连续不断的存储单元
+
+            数组 [ 11 , 32 , 65 , 14 , 32 , 22 , 13 , 8 , 12]
+                   0    1    2    3    4    5    6    7   8
+
+        2）顺序表的API实现：
+            a. 构造方法 sequenceList(int capacity) 创建容量为capacity的sequenceList对象
+            b. public void clear()空置线性表
+            c. public boolean isEmpty()判断线性表是否为空
+            d. public int length() 判断线性表中的个数
+            e. public T get(int i) 读取并返回线性表中的第i个元素
+            f. public void insert(int i,T t) 在线性表i元素之前插入一个值为t的元素
+            g. public void insert(T t) 在线性表中插入一个值为t的元素
+            h. public T remove(int i) 删除并返回线性表中的第i个元素
+            j. public int indexOf(T t) 返回线性表中首次出现的指定元素的未序号，若不存在则返回-1
+
+        3）顺序表的遍历
+
+        4） 顺序表的容量可变
+            a)添加元素时
+                1. 检查当前数组元素大小时候可以容纳新的元素
+                2. 如不能容纳则创建一个容量是原数组两倍容量的新数组存储元素
+
+                原数组 [ 1 , 2 , 3 , 4 ]
+
+                要在索引 4 处添加 "10"
+                [ 1 , 2 , 3 , 4 , 10 , 空元素 , 空元素 , 空元素 ]
+
+
+            b)移除元素时
+                1. 检查当前元素是否太大
+                2. 数据元素的数量不足数组容量的1/4，则创建一个数组容量为1/2的新数组存储元素
+
+                原数组 [ 1 , 2 , 3 ,  ,  ,  ,  ,   ,   ,   ]
+
+                需要删除3索引处的元素
+
+                [1 , 2 ,   ,  , ]
+
+
+        5)顺序表时间复杂度分析
+            a.get(i), 执行一次操作，则时间复杂度 为 O(1)
+            b.insert()操作 ，随着元素N增大，移动次数增加，时间复杂度 O(n)
+            c.remove()操作，要把i后面的位置移动，时间复杂度O(n)
+
+
+
+        6) java中ArrayList的实现
+            java中的ArrayList底层也是一种顺序表，使用数组实现同样增加了增删改查功能
+            a. ArrayList底层用数组实现
+            b. ArrayList 有扩容操作（grow）
+            c. ArrayList 提供iterator 遍历操作
+
+
+
+
+
+    1.2 链表
+        1) 定义：
+            链表是一种物理存储单元非连续的，非顺序的存储结构。数据元素的逻辑顺序是通过中的指针链接次序实现的，
+            链表是由一系列的结点组成
+
+        2) API定义：
+            类名          Node<T>
+
+            构造方法       Node(T t,Node next)
+
+            成员变量       T item 存储数据
+                          Node next： 指向下一个结点
+
+        3）单向链表
+           a)定义：
+            单向链表是链表的一种，它是由多个结点组成，每个结点都由一个数据域和一个指针域组成，数据域用来存储数据，
+            指针域用来指向后继结点。链表的头结点不存储数据，指针域指向第一个存储数据的结点
+
+           b)图解：
+                   头结点                                                       尾结点
+               [null,next] -> [data,next] -> [data,next] -> [data,next] -> [data,null]
+
+           c)API设计：
+           类名                   LinkList<T>
+
+           构造方法                LinkList() 创建LinkList对象
+
+           成员方法                void clear() 空置线性表
+                                  boolean isEmpty()判断线性表是否为空
+                                  int length() 判断线性表中的个数
+                                  T get(int i) 读取并返回线性表中的第i个元素
+                                  void insert(int i,T t) 在线性表i元素之前插入一个值为t的元素
+                                  void insert(T t) 在线性表中插入一个值为t的元素
+                                  T remove(int i) 删除并返回线性表中的第i个元素
+                                  int indexOf(T t) 返回线性表中首次出现的指定元素的未序号，若不存在则返回-1
+
+           成员内部类               private class Node<T> 终点类
+
+           成员变量                 private Node head 记录首结点
+                                   private int N 记录链表的长度
+
+        4) 双向链表
+            a)定义：
+                双向链表也叫双向表，是链表的一种，它由多个结点组成，每个结点都有两个数据域和指针域组成，数据域用来存储数据
+                指针域用来，指针域用来指向后继结点，另一个指针用来指向前驱结点，链表的头结点和数据域不存数据，指向前驱结点
+                的指针域为null，指向后继结点的指针域指向第一个真正存储数据的结点
+
+                    头结点
+            [null , null , next] <=> [pre , data , next] <=> [pre , data , next] <=> [pre , data , null]
+
+
+            b)结点API设计
+               类名                           Node<T>
+
+               构造方法                        Node(T t,pre,Node next) 创建Node对象
+
+               成员变量                        T item 存储数据
+                                              Node next：指向下一个结点
+                                              Node pre：指向上一个结点
+
+
+
+            c)双向链表API设计
+            类名                   TowWaylinkList<T>
+
+            构造方法                TowWayLinkList() 创建TowWayLinkList对象
+
+            成员方法                void clear() 空置线性表
+                                   boolean isEmpty()判断线性表是否为空
+                                   int length() 判断线性表中的个数
+                                   T get(int i) 读取并返回线性表中的第i个元素
+                                   void insert(int i,T t) 在线性表i元素之前插入一个值为t的元素
+                                   void insert(T t) 在线性表中插入一个值为t的元素
+                                   T remove(int i) 删除并返回线性表中的第i个元素
+                                   int indexOf(T t) 返回线性表中首次出现的指定元素的未序号，若不存在则返回-1
+                                   T getFirst():获取第一个元素
+                                   T getLast():获取最后一个元素
+
+            成员内部类               private class Node<T> 终点类
+
+            成员变量                 private Node First 记录首结点
+                                    private Node Last 记录尾结点
+                                    private int N 记录链表的长度
+
+
+            d)java中LinkedList的实现
+                1）LinkedList是用双项链表实现
+                    底层是否用双向链表实现
+                    终结点类是否有三个域
+
+
+        5）链表时间复杂度分析
+            a)get方法 随着i次数增大，要扫描的次数越多，线性关系 要找n次 时间复杂度O(n)
+            b)remove方法 每次移除都要找到 i位置的前一个元素，然后执行操作一次,随着i次数增大，要扫描的次数越多 时间复杂度O(n)
+            c)insert方法 也是需要找到i前面一个元素，然后完成插入操作 ， 时间复杂度O(n)
+
+            查询操作多 -- 顺序表
+            增删操作多 -- 链表
+
+
+        6）链表反转
+            单链表反转
+
+            需求
+
+
+    1.3 栈
+    1.4 队列

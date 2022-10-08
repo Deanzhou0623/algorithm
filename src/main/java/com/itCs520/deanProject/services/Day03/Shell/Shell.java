@@ -1,4 +1,4 @@
-package com.itCs520.deanProject.services.Day03;
+package com.itCs520.deanProject.services.Day03.Shell;
 
 public class Shell {
     //对数组a中的元素进行排序

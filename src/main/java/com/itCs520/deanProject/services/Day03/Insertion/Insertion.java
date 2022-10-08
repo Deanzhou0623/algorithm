@@ -1,4 +1,4 @@
-package com.itCs520.deanProject.services.Day03;
+package com.itCs520.deanProject.services.Day03.Insertion;
 
 public class Insertion {
     public static void sort(Comparable[] a) {
