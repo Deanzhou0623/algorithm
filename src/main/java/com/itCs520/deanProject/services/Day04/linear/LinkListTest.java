@@ -25,5 +25,13 @@ public class LinkListTest {
         //测试情况
 //        s1.clear();
         System.out.println(s1.length());
+
+        System.out.println("---------------------------------------------");
+
+        s1.reverse();
+
+        for (String s:s1) {
+            System.out.println(s);
+        }
     }
 }

@@ -63,6 +63,8 @@ topic: algorithm analysis
         boolean      1
         char         2
 
+        1G 10亿字节
+
     b. 一个引用需要8个字节表示： Date date = new Date() date这个变量需要8个字节
 
     c. 创建一个对象比如 new Date（）除了 内部数据需要占用内存 ， 该对象本身也有内存开销 ，每个对象的自身开销是16个字节 ，用来保存对象头信息

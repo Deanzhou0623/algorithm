@@ -1,9 +1,9 @@
-package com.itCs520.deanProject.services.Day04.linear;
+package com.itCs520.deanProject.services.Summary1.Linear;
 
 
 import java.util.Iterator;
 
-public class LinkList <T> implements Iterable<T>{
+public class LinkList<T> implements Iterable<T>{
     //记录头结点位置
     private Node head;
     //记录链表长度
@@ -198,24 +198,35 @@ public class LinkList <T> implements Iterable<T>{
 
     //用来反转整个链表
     public void reverse(){
-        //判断当前链表是否为空链表，如果是空链表，则结束运行，如果不是，则调用重载的reverse方法完成反转
+        // 判断当前链表是否为空链表，如果是空链表，则结束运行，如果不是，则调用reverse方法完成重载
         if(isEmpty()){
             return;
         }
         reverse(head.next);
     }
 
-    //反转指定结点，并把结点返回
+    //反转指定的结点，并把反转后的结点返回
     public Node reverse(Node curr){
-        if (curr.next==null){
+//        //递归出口 curr.next == null
+//        if (curr.next==null){ // 最后一个结点, 单链表反转,头结点指向最后一个结点 ，头结点的下一个结点为尾结点
+//            head.next=curr;
+//            return curr;
+//        }
+//        //递归反转当前结点curr的下一个结点，返回值就是链表反转后，当前结点的上一个结点
+//        Node pre = reverse(curr.next);  //2  , 3  ,4
+//        //让返回结点的下一个结点变为当前结点  下一个结点变为当前结点
+//        pre.next=curr;  //3 为当前结点
+//        //当前结点的下一个结点为null
+//        curr.next=null;
+//        return curr;
+        //递归出口 curr.next == null;
+        if (curr.next == null){
             head.next=curr;
             return curr;
         }
-        //递归反转curr的下一个结点：返回值就是链表反转后，当前结点的上一个结点
-        Node pre=reverse(curr.next);
-        //让返回结点的下一个结点变为当前结点curr
+        //递归反转当前结点的下一个结点
+        Node pre = reverse(curr.next);
         pre.next=curr;
-        //把当前结点的下一个结点变为null
         curr.next=null;
         return curr;
     }
