@@ -1,10 +1,7 @@
-package com.itCs520.deanProject.services.Day04.linear;
+package com.itCs520.deanProject.services.Summary1.Linear;
 
-
-
-
-public class FastSlowTest {
-    public static void main(String[] args) throws Exception  {
+public class CircleListGetEntrance {
+    public static void main(String[] args) throws Exception{
         //创建结点
         Node<String> first = new Node<String>("aa", null);
         Node<String> second = new Node<String>("bb", null);
@@ -22,36 +19,37 @@ public class FastSlowTest {
         fifth.next=six;
         six.next=seven;
 
+        //生产环
+        seven.next=third;
         //查找中间值
-        String mid=getmid(first);
-        System.out.println("中间值为"+mid);
-
-
-
-
+        Boolean mid=isCircle(first);
+        System.out.println("链表是否成环"+mid);
     }
-    //快慢指针查找中间值
-    public static String getmid(Node<String> first) {
-        //定义两个指针
+
+    //检测链表是否成环
+    public static boolean isCircle(Node<String> first){
+        //1  定义两个指针
         Node<String> fast=first;
         Node<String> slow=first;
-        //使用两个指针遍历链表，当快慢指针指向的结点没有下一个结点，就可以结束了，结束之后，慢指针指向的结点就是中间值
+        //2 使用指针遍历结点
         while (fast!=null && fast.next!=null){
-            //变化fast的值和slow的值
             fast=fast.next.next;
             slow=slow.next;
+            //3 判断快指针和慢指针是否会相遇
+            if (fast.equals(slow)){
+                return true;
+            }
         }
-        return slow.item;
+        return false;
     }
-
     //结点类
     public static class Node<T>{
         //存储数据
         T item;
         //下一个结点
-        public Node next;
+        Node<String> next;
 
-        public Node(T item, Node next){
+        public Node(T item, Node<String> next){
             this.item=item;
             this.next=next;
         }

@@ -21,7 +21,7 @@ public class BracketsMatchTest {
             if (currChar.equals("(")){
                 chars.push(currChar);
             }else if(currChar.equals(")")){
-                //4 继续判断当前字符是否有括号，如果，则从栈中弹出一个左括号，并判断弹出的结果是否为null，如果为null则证明没有匹配左括号
+                //4 继续判断当前字符是否是右括号，如果是，则从栈中弹出一个左括号，并判断弹出的结果是否为null，如果为null则证明没有匹配左括号
                 String pop=chars.pop();
                 if (pop==null){
                     return false;

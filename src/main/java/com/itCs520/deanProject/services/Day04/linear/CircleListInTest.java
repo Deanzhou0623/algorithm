@@ -21,7 +21,7 @@ public class CircleListInTest {
         //生产环
         seven.next=third;
 
-        //超找环的入口结点
+        //找环的入口结点
         Node<String> entrance=getEntrance(first);
         System.out.println("环的入口"+ entrance.item);
 

@@ -1,0 +1,173 @@
+Date: 2022 October 25th
+Author: Dean Zhou
+topic: heap & 优先队列
+
+    一. 堆 -- 用树这种数据结构来实现
+        a)定义：
+           1.定义：
+                堆可以看作是一类特殊的数据结构，堆通常可以被看作是一颗完全二叉树对象
+
+           2.特点：
+              1. 完全二叉树：除了最后一层不需要满，其他的每一层从左到右都是满的，
+                 如果最后一层不满，则要求左满右不满
+
+              2. 底层用数组实现
+                 根结点位置 1，根结点子结点从左到右位置 2 ，3，有点类似于层序遍历
+                 结点位置为k，它的父结点位置为k/2，子结点分别为2K 和 2K+1
+                 a[k]向上移一层 ，k=k/2 向下移一层就是 2k 和 2k+1
+
+              3. 每个结点都大于等于它的子结点，但是子结点顺序不固定
+
+        b) 堆的API设计：
+                类名                      Heap<extends Comparable<T>>
+
+                构造方法                   Heap(int capacity):创建构造方法对象
+
+                成员变量                   boolean less(int i,int j):判断索引i处的元素是否小于索引j处的元素
+                                          void exch(int i,int j)：交换元素i和j处索引值
+                                          T delMax():删除堆排序中最大的元素，并返回最大元素
+                                          void insert(T t):往堆中插入一个元素
+                                          void swim(int k):使用上浮算法，使索引K处的元素能在堆中处于一个正确的位置
+                                          void sink(int k):使用下层算法，使索引k处的元素能够在堆中处于正确的位置
+
+                成员变量                   T[] imtes:用来存储元素的数组
+                                          int N：记录堆中元素个数
+
+
+
+        C) 堆排序
+
+            需求：给定一个数组
+                String[] arr={"S","O","R","T","E","X","A","M","P","L","E"}
+                请对数组中的字符按从小到大进行排序
+
+            API设计：
+
+            类名                          HeapSort<T extends Comparable<T>>
+
+            成员方法                      static void sort(Comparable[] source):对source数组从小到大进行排序
+                                         static void createHeap(Comparable[] source，Comparable[] heap):根据原数组构造出堆heap
+                                         static boolean less(Comparable[] heap,int i,int j): 判断heap索引i处堆元素是否小于索引j出堆元素
+                                         static void exch(Comparable[] heap,int i,int j):交换heap堆中i索引和j索引处的值
+                                         static void sink(Comparable[] heap,int target,int range):在heap堆中，对target元素做下沉，范围是0-range
+
+            代码实现：Day06 heapSort
+
+            堆的创建：见代码
+
+            堆排序：从小到大
+
+             初始状态               (X) 1
+                                  /   \
+                             2 (T)     (S) 3
+                               / \      / \
+                           4(P) 5(L) 6(R) (A)7
+                            /  \   /  \
+                         8(M) 9(O)(E)10(E) 11
+
+             step2：
+                exch(1,11)
+                sink(1,10)
+                                 1   (T)
+                                  /       \
+                           2   (P)       3(S)
+                             /     \     /      \
+                        4 (O)     5(L) 6(R)    7(A)
+                        /     \   /
+                    8 (M)   9(L)(E) 10  (X) 11
+
+
+             step3：
+                exch(1,10)
+                sink(1,9)
+                                 1   (S)
+                                  /       \
+                           2   (P)       3(R)
+                             /     \     /      \
+                        4 (O)     5(L) 6(E)    7(A)
+                        /     \
+                    8 (M)   9(L)(T) 10  (X) 11
+
+             step4：
+                exch(1,9)
+                sink(1,8)
+                                 1   (R)
+                                  /       \
+                           2   (P)       3(E)
+                             /     \     /      \
+                        4 (O)     5(L) 6(E)    7(A)
+                        /
+                    8 (M)   9(S)(T) 10  (X) 11
+
+             step5：
+                exch(1,8)
+                sink(1,7)
+                                 1   (P)
+                                  /       \
+                           2   (Q)       3(E)
+                             /     \     /      \
+                        4 (M)     5(L) 6(E)    7(A)
+
+                    8 (R)   9(S)(T) 10  (X) 11
+
+             step6：
+                exch(1,7)
+                sink(1,6)
+                                 1   (O)
+                                  /       \
+                           2   (M)       3(E)
+                             /     \     /
+                        4 (A)     5(L) 6(E)    7(P)
+
+                    8 (R)   9(S)(T) 10  (X) 11
+
+             step7：
+                exch(1,6)
+                sink(1,5)
+                                 1   (M)
+                                  /       \
+                           2   (L)       3(E)
+                             /     \
+                        4 (A)     5(E) 6(O)    7(P)
+
+                    8 (R)   9(S)(T) 10  (X) 11
+
+
+             step9：
+                exch(1,4)
+                sink(1,3)
+                                 1   (E)
+                                  /       \
+                           2   (A)       3(E)
+
+                        4 (L)    5(M)  6(O)    7(P)
+
+                    8 (R)  9(S) (T) 10 (X) 11
+
+
+             step10：
+                exch(1,3)
+                sink(1,2)
+                                 1   (E)
+                                  /
+                           2   (A)       3(E)
+
+                        4 (L)    5(M)  6(O)    7(P)
+
+                    8 (R)  9(S) (T) 10 (X) 11
+
+
+             step11：
+                exch(1,2)
+                sink(1,1)
+                                 1   (A)
+
+                           2   (E)       3(E)
+
+                        4 (L)    5(M)  6(O)    7(P)
+
+                    8 (R)  9(S) (T) 10 (X) 11
+
+                结束，已排序
+    二.
+三

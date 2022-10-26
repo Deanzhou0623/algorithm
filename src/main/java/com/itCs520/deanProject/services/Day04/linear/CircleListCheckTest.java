@@ -1,7 +1,7 @@
 package com.itCs520.deanProject.services.Day04.linear;
 
 
-
+import java.util.Arrays;
 
 public class CircleListCheckTest {
     public static void main(String[] args) throws Exception  {
@@ -25,30 +25,64 @@ public class CircleListCheckTest {
         seven.next=third;
 
         //判断是否有环
-        boolean circle=isCircle(first);
-        System.out.println("链表中是否有环"+ circle);
+        Node circle=getEntrance(first);
+        System.out.println("链表中入口结点为"+ circle.item);
 
 
 
 
     }
-    //快慢指针查找中间值
-    public static boolean isCircle(Node<String> first) {
-        //定义两个指针
+    //快慢指针 验证链表成环问题
+//    public static Node getEntrance(Node<String> first) {
+//        //定义两个指针
+//        Node<String> fast=first;
+//        Node<String> slow=first;
+//        Node<String> temp=null;
+//        //使用两个指针遍历链表，当快慢指针指向的结点没有下一个结点，就可以结束了，结束之后，慢指针指向的结点就是中间值
+//        while (fast!=null && fast.next!=null){
+//            //变化fast的值和slow的值
+//            fast=fast.next.next;
+//            slow=slow.next;
+//
+//            //如果指针在同一位置，则指向相同结点
+//            if(fast.equals(slow)){
+//                temp=first;
+//                continue;
+//            }
+//            //临时结点变换
+//            if (temp!=null){
+//                temp=temp.next;
+//                //判断临时指针是否和快慢指针相遇
+//                if (temp.equals(slow)){
+//                    break;
+//                }
+//            }
+//        }
+//        return temp;
+//    }
+
+    public static Node getEntrance(Node<String> first){
+        //1 定义三个指针
         Node<String> fast=first;
         Node<String> slow=first;
-        //使用两个指针遍历链表，当快慢指针指向的结点没有下一个结点，就可以结束了，结束之后，慢指针指向的结点就是中间值
+        Node<String> temp=null;
+        //2 循环遍历链表
         while (fast!=null && fast.next!=null){
-            //变化fast的值和slow的值
             fast=fast.next.next;
             slow=slow.next;
 
-            //如果指针在同一位置，则指向相同结点
-            if(fast.equals(slow)){
-                return true;
+            if (fast.equals(slow)){
+                temp=first;
+                continue;
+            }
+            if (temp!=null){
+                temp=temp.next;
+                if (temp.equals(slow)){
+                    break;
+                }
             }
         }
-        return false;
+        return temp;
     }
 
     //结点类
