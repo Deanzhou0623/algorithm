@@ -72,7 +72,7 @@ public class BinaryTreePreErgodic<Key extends Comparable<Key>,Value> {
         //x树不为空的情况
         int cmp= key.compareTo(x.key);
         if (cmp>0){
-            //如果key大于x结点的键，则继续找x结点的左子树
+            //如果key大于x结点的键，则继续找x结点的右子树
             return get(x.right,key);
         }else if (cmp<0){
             //如果key小于x结点的键，则继续找x结点的左子树

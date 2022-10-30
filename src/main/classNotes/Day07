@@ -1,0 +1,93 @@
+Date: 2022 September 28th
+Author: Dean Zhou
+topic: 优先队列
+
+一. 优先队列
+    a)基本概念：
+      1.定义
+        普通队列是一种先进先出的数据结构，元素在队列尾追加，而从对列头删除。
+        无法根据数据对重要性去优先处理某一数据
+
+        优先队列可以对数据的处理顺序根据需求进行调整
+        -----------------------------------------------------------------
+        [task:优先级2][task:优先级1][task:优先级3][task:优先级5][task:优先级4]
+        -----------------------------------------------------------------
+      2.分类
+        优先队列按照其作用不同，可以分为以下两种
+           最大优先队列：
+                可以获取并删除队列中的最大值
+           最小优先队列：
+                可以获取并删除队列中的最小值
+
+
+    a)最大优先队列
+        1. API设计
+            类名                              maxPriorityQueue<T extends Comparable<T>>
+
+            构造方法                           maxPriorityQueue(int capacity)创建容量为capacity的maxPriorityQueue对象
+
+            成员方法                           boolean less(int i,int j): 判断索引i处堆元素是否小于索引j出堆元素
+                                              void exch(int i,int j):交换heap堆中i索引和j索引处的值
+                                              T delMax():删除队列中的最大元素并返回这个元素
+                                              void insert(T t):往元素队列中插入一个元素
+                                              void swim(int k):使用上浮算法，使索引k出的元素处于一个合适的位置
+                                              void sink(int k):使用下浮算法，使索引k出的元素处于一个合适的位置
+                                              int size():获取元素之间的个数
+                                              boolean isEmpty():判断队列是否为空
+
+            成员变量                           private  I[] items;用来存储元素的数组
+                                              private int N;记录堆中元素个数
+
+        2. 代码实现：MaxPriorityQueue
+
+    b)最小优先队列
+        1. 最大堆
+            1. 最大的元素放在索引1处
+            2. 每个结点的数据总是大于等于它的两个子结点的数据
+
+        图示：
+                      0   1  2   3    4   5   6   7   8   9   10  11
+                 数组[  , T , S , R , P , N , O , A , E , I , H , G ]
+
+                                            (T)
+                                        /        \
+                                      (S)         (R)
+                                    /     \      /    \
+                                 (P)      (N) (O)     (A)
+                                /   \     /  \
+                              (E)   (I) (H)   (G)
+
+        2. 最小堆:
+             1. 最小元素放在数组索引1处
+             2. 每个结点的数据总是小于等于它两个子结点的数据
+
+             图示：
+                     0   1   2   3    4   5   6   7
+                 数组[  , A , E , F , O , P , S , T ]
+
+                                            (A)
+                                        /        \
+                                      (E)         (F)
+                                    /     \      /    \
+                                 (O)      (P) (S)     (T)
+
+            3. API设计
+                   类名                              MinPriorityQueue<T extends Comparable<T>>
+
+                   构造方法                           MinPriorityQueue(int capacity)创建容量为capacity的minPriorityQueue对象
+
+                   成员方法                           boolean less(int i,int j): 判断索引i处堆元素是否小于索引j出堆元素
+                                                     void exch(int i,int j):交换heap堆中i索引和j索引处的值
+                                                     T delMin():删除队列中的最大元素并返回这个元素
+                                                     void insert(T t):往元素队列中插入一个元素
+                                                     void swim(int k):使用上浮算法，使索引k出的元素处于一个合适的位置
+                                                     void sink(int k):使用下浮算法，使索引k出的元素处于一个合适的位置
+                                                     int size():获取元素之间的个数
+                                                     boolean isEmpty():判断队列是否为空
+
+                   成员变量                           private  I[] items;用来存储元素的数组
+                                                     private int N;记录堆中元素个数
+
+    c)索引优先队列
+
+

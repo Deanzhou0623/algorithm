@@ -3,7 +3,7 @@ package com.itCs520.deanProject.services.Day05.SymbolTable;
 public class OrderSymbolTableTest {
     public static void main(String[] args) {
         //创建符号对象表
-        OrderSymbolTable<Integer, String> symbolTable = new OrderSymbolTable<>();
+        OrderSysmbolTable2<Integer, String> symbolTable = new OrderSysmbolTable2<>();
 
         //测试put方法
         symbolTable.put(1,"前锋");

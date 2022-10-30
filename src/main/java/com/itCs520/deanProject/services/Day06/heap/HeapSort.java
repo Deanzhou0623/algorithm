@@ -17,7 +17,7 @@ public class HeapSort {
         //把source元素中拷贝到heap中，heap中的元素形成一个无序的堆
         System.arraycopy(source,0,heap,1,source.length);
 
-        //对堆中元素做下沉调整(长度一般开始，往索引i处扫描)
+        //对堆中元素做下沉调整(长度一半开始，往索引i处扫描)
         for (int i = heap.length/2; i >0; i--) {
             sink(heap,i, heap.length-1);
         }
