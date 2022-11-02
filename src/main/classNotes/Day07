@@ -89,5 +89,83 @@ topic: 优先队列
                                                      private int N;记录堆中元素个数
 
     c)索引优先队列
+        1. 定义：
+            为了解决最小优先队列和最大优先队列无法通过索引访问已经存在于优先队列中的对象，并做一些操作，
+            在优先队列的基础上，学习一种新的数据结构，索引优先队列，可以解决该问题
+
+        2. 实现思路：
+             step1：
+                 通过T[] items这样的数组来保存数据元素，通过insert(int k,int T) 插入数据，把t元素放在
+                 索引K处，再根据k取t
+             图示：
+                存放{ "S" , "O"  , "R"  , "T" , "E"  , "X" , "A" , "M" , "P" , "L" , "E"}
+             T[] items:用来保存数据元素
+                     0   1   2   3    4   5   6   7   8   9  10   11
+                 数组[  ,   ,   ,   ,   ,   ,   ,   ,   ,   ,   ,    ]
+
+             执行insert插入操作 insert(0,"S")
+                     0   1   2   3    4   5   6   7   8   9  10   11
+                   [ "S" ,   ,   ,   ,   ,   ,   ,   ,   ,   ,   ,    ]
+
+             执行insert插入操作 insert(1,"O")
+                     0   1   2   3    4   5   6   7   8   9  10   11
+                   ["S","O" ,   ,   ,   ,   ,   ,   ,   ,   ,   ,    ]
+             .......
+             执行insert插入操作 insert(9,"L")
+                     0   1   2   3   4   5   6   7   8   9  10   11
+                   ["S","O","R","T","E","X","A","M","P","L","E",    ]
 
 
+             step2: 因为items数组中元素是随机的，并不是堆有序，因此可以增加一个数组
+                    int[]pq,来保存每个元素在items在items数组中的索引，pq数组需要堆
+                    有序，也就是说 pq[1]对应的元素items[pq[1]]要小于等于pq[2],pq[3]
+                    对应的元素
+
+                             0   1   2   3   4   5   6   7   8   9  10   11
+             T[] items     ["S","O","R","T","E","X","A","M","P","L","E",    ]
+
+             最小堆有序对应的完全二叉树：
+
+                                           (A)  6
+                                        /        \
+                                10    (E)         (E)  4
+                                    /     \      /    \
+                           9     (L)    7 (M) (O)  1  (P) 8
+                                /   \     /  \
+                            2 (R)  0 (S) (T) 3 (X) 5
+
+             int[]pq:存放元素在items里面的索引(堆调整后的顺序)
+                   0   1   2   3   4   5   6   7   8   9  10   11
+                 [   , 6 ,10 , 4 , 9 , 7 , 1 , 8 , 2 , 0 , 3 , 5 ]
+                 堆有序：items[pq[i]] 小于等于items[pq[2*i]]和items[pq[2*i+1]]
+
+             step3: 设立一个新数组int[]qp 用来存储pq的逆序 (元素未经过堆排序之前堆位置)
+
+                 e.g "S" s元素经过堆排序 是在intpq中 索引为9 ，未经过排序前索引为0
+                     因此存入int[]qp存入数据为[0,9] 第一位为索引，第二位为堆排序之后堆位置
+                    0   1   2   3   4   5   6   7   8   9  10   11
+                  [ 9 , 6 , 8 , 10 ,3 ,11 , 1 , 5 , 7 , 4 , 2 ,   ]
+                  方便调整元素
+
+        3. API 设计
+            类名                                   IndexPriorityQueue<T extends Comparable<T>>
+
+            构造方法                                IndexPriorityQueue(int capacity)创建容量为capacity的IndexPriorityQueue对象
+
+            成员方法                                boolean less(int i,int j): 判断索引i处堆元素是否小于索引j出堆元素
+                                                   void exch(int i,int j):交换heap堆中i索引和j索引处的值
+                                                   T delMin():删除队列中的最小元素并返回这个元素索引
+                                                   void insert(int i,T t):往元素队列中插入一个元素,并关联索引i
+                                                   void swim(int k):使用上浮算法，使索引k出的元素处于一个合适的位置
+                                                   void sink(int k):使用下浮算法，使索引k出的元素处于一个合适的位置
+                                                   int size():获取元素之间的个数
+                                                   boolean isEmpty():判断队列是否为空
+                                                   boolean contains(int k):判断k对应的元素是否存在
+                                                   void changeitem(int i,T t):把与索引i关联的元素改为t
+                                                   int mindIndex():最小元素关联索引
+                                                   void delete(int i):删除索引i关联元素
+
+            成员变量                                private I[] items;用来存储元素的数组
+                                                   private int N;记录堆中元素个数
+                                                   private int[] pq:保存每一个元素在items数组中的索引，pq数组需要堆有序
+                                                   private int[] qp:保存qp的逆序，pq的值为索引，pq的索引为值
