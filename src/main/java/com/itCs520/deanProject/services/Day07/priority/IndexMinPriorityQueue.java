@@ -1,6 +1,6 @@
 package com.itCs520.deanProject.services.Day07.priority;
 
-public class IndexPriorityQueue<T extends Comparable<T>> {
+public class IndexMinPriorityQueue<T extends Comparable<T>> {
     //存储堆中堆元素
     private T[] items;
     //记录堆中元素个数
@@ -12,7 +12,7 @@ public class IndexPriorityQueue<T extends Comparable<T>> {
 
 
     //构造方法
-    public IndexPriorityQueue(int capacity){
+    public IndexMinPriorityQueue(int capacity){
         this.items=(T[])new Comparable[capacity+1];
         this.pq=new int[capacity+1];
         this.qp=new int[capacity+1];
