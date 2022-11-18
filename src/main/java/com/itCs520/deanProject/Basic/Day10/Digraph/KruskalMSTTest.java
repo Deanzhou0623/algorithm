@@ -6,13 +6,14 @@ import com.itCs520.deanProject.Basic.Day10.Digraph.EdgeWeightedGraph;
 import com.itCs520.deanProject.Basic.Day10.Digraph.KruskalMST;
 
 import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class KruskalMSTTest {
     public static void main(String[] args) throws IOException {
         //准备一副加权无向图
-        BufferedReader br = new BufferedReader(new InputStreamReader(KruskalMSTTest.class.getClassLoader().getResourceAsStream("min_create_tree_test.txt")));
+        BufferedReader br = new BufferedReader(new FileReader("src/min_create_tree_test.txt"));
         int total = Integer.parseInt(br.readLine());
         EdgeWeightedGraph G = new EdgeWeightedGraph(total);
 
