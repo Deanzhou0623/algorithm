@@ -3,12 +3,13 @@ package com.itCs520.deanProject.Basic.Day10.Digraph;
 import com.itCs520.deanProject.Basic.Day04.linear.Queue;
 
 import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class DijkstraSPTest {
     public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(DijkstraSPTest.class.getClassLoader().getResourceAsStream("min_route_test.txt")));
+        BufferedReader br = new BufferedReader(new FileReader("src/min_route_test.txt"));
         int total = Integer.parseInt(br.readLine());
         EdgeWeightedDigraph G = new EdgeWeightedDigraph(total);
 
@@ -32,8 +33,8 @@ public class DijkstraSPTest {
         Queue<DirectedEdge> edges = dijkstraSP.pathTo(6);
 
         //遍历打印
-        for (DirectedEdge e : edges) {
-            System.out.println(e.from()+"->"+e.to()+": :"+e.weight());
+        for (DirectedEdge edge : edges) {
+            System.out.println(edge.from()+"->"+edge.to()+": :"+edge.weight());
         }
 
     }

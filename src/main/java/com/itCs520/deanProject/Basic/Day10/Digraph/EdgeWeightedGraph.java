@@ -24,7 +24,7 @@ public class EdgeWeightedGraph {
         }
     }
     //获取图中顶点的数量
-    public int v(){
+    public int V(){
         return V;
     }
     //获取图中边的数量

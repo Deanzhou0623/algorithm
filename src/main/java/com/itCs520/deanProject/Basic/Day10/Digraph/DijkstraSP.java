@@ -15,14 +15,14 @@ public class DijkstraSP {
     //根据一副加权有向图和顶点s，创建一个计算顶点s的最短路径树的对象
     public DijkstraSP(EdgeWeightedDigraph G, int s){
         //初始化edgeTo
-        this.edgeTo = new DirectedEdge[G.v()];
+        this.edgeTo = new DirectedEdge[G.V()];
         //初始化distTo
-        this.distTo = new double[G.v()];
+        this.distTo = new double[G.V()];
         for (int i = 0; i < distTo.length; i++) {
             distTo[i] = Double.NEGATIVE_INFINITY;
         }
         //初始化pq
-        this.pq = new IndexMinPriorityQueue<>(G.v());
+        this.pq = new IndexMinPriorityQueue<>(G.V());
 
         //找到图G中以顶点s为起点对最短路径树
         distTo[s]=0.0;

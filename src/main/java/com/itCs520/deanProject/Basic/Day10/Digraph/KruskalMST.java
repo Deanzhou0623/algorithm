@@ -19,7 +19,7 @@ public class KruskalMST {
         //初始化mst
         this.mst = new Queue<com.itCs520.deanProject.Basic.Day10.Digraph.Edge>();
         //初始化uf
-        this.uf = new UF_tree_Weighted(G.v());
+        this.uf = new UF_tree_Weighted(G.V());
         //初始化pq
         this.pq = new MinpriorityQueue<>(G.E()+1); //从1开始存储
         //把图中所有的边存储到pq中
@@ -27,7 +27,7 @@ public class KruskalMST {
             pq.insert(e);
         }
         //遍历pq队列，拿到最小权重到边，进行处理
-        while (!pq.isEmpty() && mst.size()<G.v()-1){
+        while (!pq.isEmpty() && mst.size()<G.V()-1){
             //找到权重最小到边
             com.itCs520.deanProject.Basic.Day10.Digraph.Edge e = pq.delMin();
             //找到该边到两个顶点
