@@ -1,6 +1,6 @@
 1. leetCode-70 爬楼梯
 
-2. 剑值offer-10 斐波那切数列
+2. 剑指offer-10 斐波那切数列
    热点：京东
 
 数组：
@@ -11,3 +11,14 @@
     4. LeetCode- 88合并两个有序数组
         热点：字节，美团，快手
        《LeetCode hot100专题》
+
+    5. LeetCode- 283 移动零
+        热点：
+       《LeetCode hot100专题》
+
+    6.  LeetCode- 448 找到所有数组中消失的数字
+         热点：
+        《LeetCode hot100专题》
+
+    7. 剑指offer-53  0 ~ n-1中缺失的数字
+         热点：京东

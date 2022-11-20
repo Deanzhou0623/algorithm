@@ -26,4 +26,54 @@ public class LeetCode88 {
         }
         Arrays.sort(nums1);
     }
+    /*2. solution2 :通过两个指针去循环数组中的数组并进行比较，将较小元素存入临时数组，并指针向后移一位
+     * */
+    public void merge2(int[] nums1, int m,int[] nums2,int n){
+        int k=m+n;
+        //1. 创建一个临时数组
+        int[] temp=new int[k];
+        //2. for循环模拟指针
+        for (int index = 0,nums1Index =0,nums2Index=0;index < k; index++) {
+            if (nums1Index>=m){/*数组1的数据已经取完，直接添加数组2的数据即可*/
+                temp[index] = nums2[nums2Index++];
+            }else if (nums2Index>=n) {/*数组2的数据已经取完，直接添加数组1的数据即可*/
+                temp[index] = nums1[nums1Index++];
+            }else if (nums1[nums1Index]<nums2[nums2Index]){
+                /*nums1数组的数据小于nums2数组的数据，将nums1的数组存入进temp数组*/
+                temp[index] = nums1[nums1Index++];
+            }else {
+                temp[index] = nums2[nums2Index++];
+            }
+        }
+        //3.将临时数组的数据复制给nums1并返回
+        for (int i = 0; i <k ; i++) {
+            nums1[i]=temp[i];
+        }
+    }
+
+    /*3. solution3 :对方案2进行优化降低空间复杂度，不需要开辟额外空间
+                通过指针倒叙取元素，并将元素存放在nums1数组中的最后一个
+     * */
+    public void merge3(int[] nums1, int m,int[] nums2,int n) {
+        //1.得到元素的个数
+        int k = m + n;
+        //2. for循环模拟倒叙指针取元素
+        for (int index = k-1,nums1Index=m-1,nums2Index=n-1; index >=0; index--) {
+            /*数组1的数据已经取完，直接添加数组2的数据即可*/
+            if (nums1Index<0){
+                nums1[index]=nums2[nums2Index--];
+            }
+            /*数组2的数据已经取完，直接添加数组1的数据即可,因为是往nums1中添加数据，直接break*/
+           else if (nums2Index<0){
+                break;
+            }
+            /*nums1数组的数据大于nums2数组的数据，将nums1的数组存入数组*/
+            else if (nums1[nums1Index]>nums2[nums2Index]){
+                nums1[index]=nums1[nums1Index--];
+            }else {//nums2数组的数据大于nums1数组的数据
+                nums1[index]=nums2[nums2Index--];
+            }
+        }
+
+    }
 }
