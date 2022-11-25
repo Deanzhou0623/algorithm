@@ -7,7 +7,7 @@ public class Heap2  <T extends Comparable<T>>{
     private int N;
 
     public Heap2(int capacity){
-        this.items =(T[])new Comparable[capacity+1];
+        this.items= (T[]) new Object[capacity];
         this.N=0;
     }
     //判断索引i处的元素是否小于索引j处的元素
