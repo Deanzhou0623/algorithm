@@ -58,7 +58,7 @@ public class Merge {
         int i= lo;
         int p1= lo;
         int p2= mid+1;
-
+        
         //2.遍历移动p1指针和p2指针，比较对应索引处的值，找出最小的那个，放到辅助数组最小索引处
         while (p1<=mid && p2<=hi){
             //比较对应索引处的值

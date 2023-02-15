@@ -101,7 +101,7 @@ listB 中节点数目为 n
         //3.循环指针
         while (pA!=pB) {
             pA = pA==null?headB:pA.next;
-            pB = pA==null?headA:pB.next;
+            pB = pB==null?headA:pB.next;
         }
         //4.返回对象
             return pA;

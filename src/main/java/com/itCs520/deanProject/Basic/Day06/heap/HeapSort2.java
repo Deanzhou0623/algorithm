@@ -46,7 +46,7 @@ public class HeapSort2 {
             //1 找出当前结点较大的子结点
             int max ;
             if (2*target+1<=range){
-                if (less(heap,2*target,2*target+1)){
+                if (less(heap,2*target,2*(target+1))){
                     max=2*target+1;
                 }else {
                     max=2*target;
