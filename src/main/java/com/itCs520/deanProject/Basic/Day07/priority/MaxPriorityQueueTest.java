@@ -5,7 +5,7 @@ import com.itCs520.deanProject.Basic.Day07.priority.MaxpriorityQueue;
 public class MaxPriorityQueueTest {
     public static void main(String[] args) {
         //创建优先队列
-        com.itCs520.deanProject.Basic.Day07.priority.MaxpriorityQueue<String> queue = new MaxpriorityQueue<>(10);
+        MaxpriorityQueue2<String> queue = new MaxpriorityQueue2<>(10);
         //往队列中存储元素
         queue.insert("A");
         queue.insert("B");

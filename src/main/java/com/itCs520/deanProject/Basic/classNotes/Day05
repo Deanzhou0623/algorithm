@@ -283,4 +283,7 @@ topic: 符号表 / 树tree
                     代码实现：PagerFolding
 
 
+        二叉排序树(BST)
+        1. Binary search tree   左子节点 小于根结点 右子节点大于根结点
 
+        2. 实现：
