@@ -54,7 +54,7 @@ public class Queue<T> implements Iterable<T> {
             last=null;
         }
         return oldFirst.item;
-        }
+    }
 
 
     //往队列中插入一个元素

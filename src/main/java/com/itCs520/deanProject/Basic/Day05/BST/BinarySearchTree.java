@@ -136,6 +136,7 @@ class BST{
             System.out.println("BST is null");
     }
 }
+
 //创建node结点
 class Node{
     int value;
@@ -144,15 +145,6 @@ class Node{
 
     public Node(int value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return "Node{" +
-                "value=" + value +
-                ", left=" + left +
-                ", right=" + right +
-                '}';
     }
 
     /**
