@@ -1,0 +1,22 @@
+递归
+    1. 定义：recursion
+     递归是一种解决问题的方法，其中解决方案取决于同一类问题的更小子集
+     in computer science ,recursion is a method of solving a
+     computational problem where the solution depends on solutions
+     to smaller instances of the same problem.
+
+     单链表递归：
+      void f(Node node){
+           if(node == null)
+                return;
+      }
+           f(node.next);
+    2. 说明
+       1. 解决方案是一样的 ，自己调用自己（有规律的）
+       2. 每次调用，函数处理数据会较上次缩减(子集), 最后缩减至无需继续递归
+       3. 内层函数子集调用处理完成，外层函数才算调用完成
+
+    3. 解题思路：
+       1. 确定是否能使用递归
+       2. 推导出递归关系，即父问题与子问题 ，以及递归结束条件
+       3.
